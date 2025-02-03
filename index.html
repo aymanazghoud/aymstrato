@@ -3,15 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYMSTRATOR</title>
+    <title>Trading Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* ... (keep all previous styles the same) ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #0a0e17;
+            color: white;
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 14, 23, 0.95);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00a3ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00a3ff;
+        }
 
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(10, 14, 23, 0.7), rgba(10, 14, 23, 0.7)),
-                        url('https://t3.ftcdn.net/jpg/08/48/03/88/360_F_848038838_l0oH9OsV5cj4O2jfSe9yXHG08gi9NKNi.jpg') center/cover;
+                        url('hero-bg.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -19,10 +65,151 @@
             padding: 0 20px;
         }
 
-        /* ... (rest of the CSS remains the same) ... */
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            background: #00a3ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #007acc;
+        }
+
+        .stats {
+            padding: 100px 50px;
+            background: #131822;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            color: #00a3ff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .features {
+            padding: 100px 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #131822;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-card i {
+            font-size: 2em;
+            color: #00a3ff;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- ... (keep all HTML the same) ... -->
+    <nav class="navbar">
+        <div class="logo">TRADINGPLATFORM</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Empower Your Trading Journey</h1>
+            <p>Join thousands of successful traders worldwide</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <h2>$100M+</h2>
+            <p>Capital Deployed</p>
+        </div>
+        <div class="stat-item">
+            <h2>50K+</h2>
+            <p>Traders Funded</p>
+        </div>
+        <div class="stat-item">
+            <h2>150+</h2>
+            <p>Countries Supported</p>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Advanced Analytics</h3>
+            <p>Real-time market data and advanced charting tools</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Risk Management</h3>
+            <p>Sophisticated risk management tools and protocols</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h3>24/7 Support</h3>
+            <p>Round-the-clock customer support service</p>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
