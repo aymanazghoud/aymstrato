@@ -14,8 +14,8 @@
         }
 
         body {
-            background-color: #0a0e17;
             color: white;
+            background: #131822; /* Fallback background for the rest of the website */
         }
 
         .navbar {
@@ -56,26 +56,13 @@
 
         .hero {
             height: 100vh;
-            background: linear-gradient(-45deg, #0a0e17, #1a1f2e, #2a2f3e, #3a3f4e);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 0 20px;
-        }
-
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content h1 {
@@ -204,7 +191,25 @@
         </div>
     </section>
 
+    <!-- Add Three.js and Vanta.js scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <script>
+        // Initialize Vanta.js NET effect only in the .hero section
+        VANTA.NET({
+            el: ".hero", // Apply to the .hero section only
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x00a3ff, // Hex color for the net effect
+            backgroundColor: 0x131822 // Hex color for the background
+        });
+
+        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
