@@ -1,377 +1,228 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>AYMSTRATO</title>  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css ">  
-    <style>  
-        * {  
-            margin: 0;  
-            padding: 0;  
-            box-sizing: border-box;  
-            font-family: 'Arial', sans-serif;  
-        }  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYMSTRATO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
 
-        body {  
-            background-color: #0a0e17;  
-            color: white;  
-            overflow: hidden; /* Prevent scrollbars from appearing */  
-        }  
+        body {
+            background-color: #0a0e17;
+            color: white;
+        }
 
-        canvas {  
-            position: fixed; /* Canvas covers the whole window */  
-            top: 0;  
-            left: 0;  
-            width: 100%;  
-            height: 100%;  
-            z-index: -1; /* Canvas should be behind all other elements */  
-        }  
+        .navbar {
+            position: fixed;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
 
-        .navbar {  
-            position: fixed;  
-            width: 100%;  
-            padding: 20px 50px;  
-            display: flex;  
-            justify-content: space-between;  
-            align-items: center;  
-            z-index: 1000;  
-            transition: background 0.3s;  
-        }  
+        .navbar.scrolled {
+            background: rgba(10, 14, 23, 0.95);
+        }
 
-        .navbar.scrolled {  
-            background: rgba(10, 14, 23, 0.95);  
-        }  
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00a3ff;
+        }
 
-        .logo {  
-            font-size: 24px;  
-            font-weight: bold;  
-            color: #00a3ff;  
-        }  
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
 
-        .nav-links {  
-            display: flex;  
-            gap: 30px;  
-        }  
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-        .nav-links a {  
-            color: white;  
-            text-decoration: none;  
-            transition: color 0.3s;  
-        }  
+        .nav-links a:hover {
+            color: #00a3ff;
+        }
 
-        .nav-links a:hover {  
-            color: #00a3ff;  
-        }  
+        .hero {
+            height: 100vh;
+            background: linear-gradient(-45deg, #0a0e17, #1a1f2e, #2a2f3e, #3a3f4e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-        .hero {  
-            height: 100vh;  
-            display: flex;  
-            align-items: center;  
-            justify-content: center;  
-            text-align: center;  
-            padding: 0 20px;  
-        }  
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-        .hero-content h1 {  
-            font-size: 3.5em;  
-            margin-bottom: 20px;  
-        }  
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
 
-        .hero-content p {  
-            font-size: 1.2em;  
-            margin-bottom: 30px;  
-        }  
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
 
-        .cta-button {  
-            padding: 15px 40px;  
-            background: #00a3ff;  
-            color: white;  
-            border: none;  
-            border-radius: 5px;  
-            font-size: 1.1em;  
-            cursor: pointer;  
-            transition: background 0.3s;  
-        }  
+        .cta-button {
+            padding: 15px 40px;
+            background: #00a3ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
 
-        .cta-button:hover {  
-            background: #007acc;  
-        }  
+        .cta-button:hover {
+            background: #007acc;
+        }
 
-        .stats {  
-            padding: 100px 50px;  
-            background: #131822;  
-            display: flex;  
-            justify-content: space-around;  
-            text-align: center;  
-        }  
+        .stats {
+            padding: 100px 50px;
+            background: #131822;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
 
-        .stat-item h2 {  
-            color: #00a3ff;  
-            font-size: 2.5em;  
-            margin-bottom: 10px;  
-        }  
+        .stat-item h2 {
+            color: #00a3ff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
 
-        .features {  
-            padding: 100px 50px;  
-            display: grid;  
-            grid-template-columns: repeat(3, 1fr);  
-            gap: 30px;  
-        }  
+        .features {
+            padding: 100px 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
 
-        .feature-card {  
-            background: #131822;  
-            padding: 30px;  
-            border-radius: 10px;  
-            text-align: center;  
-        }  
+        .feature-card {
+            background: #131822;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
 
-        .feature-card i {  
-            font-size: 2em;  
-            color: #00a3ff;  
-            margin-bottom: 20px;  
-        }  
+        .feature-card i {
+            font-size: 2em;
+            color: #00a3ff;
+            margin-bottom: 20px;
+        }
 
-        @media (max-width: 768px) {  
-            .features {  
-                grid-template-columns: 1fr;  
-            }  
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
             
-            .nav-links {  
-                display: none;  
-            }  
+            .nav-links {
+                display: none;
+            }
             
-            .hero-content h1 {  
-                font-size: 2.5em;  
-            }  
-        }  
-    </style>  
-</head>  
-<body>  
-    <canvas id="canvas"></canvas>  
-    
-    <nav class="navbar">  
-        <div class="logo">AYMSTRATO</div>  
-        <div class="nav-links">  
-            <a href="#home">Home</a>  
-            <a href="#about">About</a>  
-            <a href="#features">Features</a>  
-            <a href="#contact">Contact</a>  
-        </div>  
-    </nav>  
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">AYMSTRATO</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
 
-    <section class="hero" id="home">  
-        <div class="hero-content">  
-            <h1>Empower Your Trading Journey</h1>  
-            <p>Join thousands of successful traders worldwide</p>  
-            <button class="cta-button">Get Started</button>  
-        </div>  
-    </section>  
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Empower Your Trading Journey</h1>
+            <p>Join thousands of successful traders worldwide</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </section>
 
-    <section class="stats">  
-        <div class="stat-item">  
-            <h2>$100M+</h2>  
-            <p>Capital Deployed</p>  
-        </div>  
-        <div class="stat-item">  
-            <h2>50K+</h2>  
-            <p>Traders Funded</p>  
-        </div>  
-        <div class="stat-item">  
-            <h2>150+</h2>  
-            <p>Countries Supported</p>  
-        </div>  
-    </section>  
+    <section class="stats">
+        <div class="stat-item">
+            <h2>$100M+</h2>
+            <p>Capital Deployed</p>
+        </div>
+        <div class="stat-item">
+            <h2>50K+</h2>
+            <p>Traders Funded</p>
+        </div>
+        <div class="stat-item">
+            <h2>150+</h2>
+            <p>Countries Supported</p>
+        </div>
+    </section>
 
-    <section class="features" id="features">  
-        <div class="feature-card">  
-            <i class="fas fa-chart-line"></i>  
-            <h3>Advanced Analytics</h3>  
-            <p>Real-time market data and advanced charting tools</p>  
-        </div>  
-        <div class="feature-card">  
-            <i class="fas fa-shield-alt"></i>  
-            <h3>Risk Management</h3>  
-            <p>Sophisticated risk management tools and protocols</p>  
-        </div>  
-        <div class="feature-card">  
-            <i class="fas fa-clock"></i>  
-            <h3>24/7 Support</h3>  
-            <p>Round-the-clock customer support service</p>  
-        </div>  
-    </section>  
+    <section class="features" id="features">
+        <div class="feature-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Advanced Analytics</h3>
+            <p>Real-time market data and advanced charting tools</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Risk Management</h3>
+            <p>Sophisticated risk management tools and protocols</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h3>24/7 Support</h3>
+            <p>Round-the-clock customer support service</p>
+        </div>
+    </section>
 
-    <script>  
-        // WebGL initialization  
-        var canvas = document.getElementById("canvas");  
-        canvas.width = window.innerWidth;  
-        canvas.height = window.innerHeight;  
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-        // Initialize the GL context  
-        var gl = canvas.getContext('webgl');  
-        if(!gl){  
-            console.error("Unable to initialize WebGL.");  
-        }  
-
-        //Time  
-        var time = 0.0;  
-
-        //************** Shader sources **************  
-        var vertexSource = `  
-        attribute vec2 position;  
-        void main() {  
-            gl_Position = vec4(position, 0.0, 1.0);  
-        }  
-        `;  
-
-        var fragmentSource = `  
-        precision highp float;  
-
-        uniform float width;  
-        uniform float height;  
-        vec2 resolution = vec2(width, height);  
-        uniform float time;  
-
-        float getWaveGlow(vec2 pos, float radius, float intensity, float speed, float amplitude, float frequency, float shift) {  
-            float dist = abs(pos.y + amplitude * sin(shift + speed * time + pos.x * frequency));  
-            dist = 1.0 / dist;  
-            dist *= radius;  
-            dist = pow(dist, intensity);  
-            return dist;  
-        }  
-
-        void main() {  
-            vec2 uv = gl_FragCoord.xy / resolution.xy;  
-            float widthHeightRatio = resolution.x / resolution.y;  
-            vec2 centre = vec2(0.5, 0.5);  
-            vec2 pos = centre - uv;  
-            pos.y /= widthHeightRatio;  
-
-            float intensity = 1.5;  
-            float radius = 0.02;  
-
-            vec3 col = vec3(0.0);  
-            float dist = 0.0;  
-
-            dist = getWaveGlow(pos, radius, intensity, 2.0, 0.018, 3.7, 0.0);  
-            col += dist * (vec3(0.1) + 0.5 + 0.5 * cos(3.14 + time + vec3(0, 2, 4)));  
-
-            dist = getWaveGlow(pos, radius, intensity, 4.0, 0.018, 6.0, 2.0);  
-            col += dist * (vec3(0.1) + 0.5 + 0.5 * cos(1.57 + time + vec3(0, 2, 4)));  
-
-            dist = getWaveGlow(pos, radius * 0.5, intensity, -5.0, 0.018, 4.0, 1.0);  
-            col += dist * (vec3(0.1) + 0.5 + 0.5 * cos(time + vec3(0, 2, 4)));  
-
-            col = 1.0 - exp(-col);  
-            col = pow(col, vec3(0.4545));  
-
-            gl_FragColor = vec4(col, 1.0);  
-        }  
-        `;  
-
-        // Compile shader and combine with source  
-        function compileShader(shaderSource, shaderType) {  
-            var shader = gl.createShader(shaderType);  
-            gl.shaderSource(shader, shaderSource);  
-            gl.compileShader(shader);  
-            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {  
-                throw "Shader compile failed with: " + gl.getShaderInfoLog(shader);  
-            }  
-            return shader;  
-        }  
-
-        function getAttribLocation(program, name) {  
-            var attributeLocation = gl.getAttribLocation(program, name);  
-            if (attributeLocation === -1) {  
-                throw 'Cannot find attribute ' + name + '.';  
-            }  
-            return attributeLocation;  
-        }  
-
-        function getUniformLocation(program, name) {  
-            var uniformLocation = gl.getUniformLocation(program, name);  
-            if (uniformLocation === -1) {  
-                throw 'Cannot find uniform ' + name + '.';  
-            }  
-            return uniformLocation;  
-        }  
-
-        // Create shaders  
-        var vertexShader = compileShader(vertexSource, gl.VERTEX_SHADER);  
-        var fragmentShader = compileShader(fragmentSource, gl.FRAGMENT_SHADER);  
-        var program = gl.createProgram();  
-        gl.attachShader(program, vertexShader);  
-        gl.attachShader(program, fragmentShader);  
-        gl.linkProgram(program);  
-        gl.useProgram(program);  
-
-        // Set up rectangle covering entire canvas   
-        var vertexData = new Float32Array([  
-            -1.0,  1.0,  // top left  
-            -1.0, -1.0,  // bottom left  
-             1.0,  1.0,  // top right  
-             1.0, -1.0,  // bottom right  
-        ]);  
-
-        var vertexDataBuffer = gl.createBuffer();  
-        gl.bindBuffer(gl.ARRAY_BUFFER, vertexDataBuffer);  
-        gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);  
-
-        var positionHandle = getAttribLocation(program, 'position');  
-        gl.enableVertexAttribArray(positionHandle);  
-        gl.vertexAttribPointer(positionHandle, 2, gl.FLOAT, false, 2 * 4, 0);  
-
-        var timeHandle = getUniformLocation(program, 'time');  
-        var widthHandle = getUniformLocation(program, 'width');  
-        var heightHandle = getUniformLocation(program, 'height');  
-
-        gl.uniform1f(widthHandle, window.innerWidth);  
-        gl.uniform1f(heightHandle, window.innerHeight);  
-
-        var lastFrame = Date.now();  
-        var thisFrame;  
-
-        function draw() {  
-            thisFrame = Date.now();  
-            time += (thisFrame - lastFrame) / 3000;	  
-            lastFrame = thisFrame;  
-
-            gl.uniform1f(timeHandle, time);  
-            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);  
-
-            requestAnimationFrame(draw);  
-        }  
-
-        draw();  
-
-        // Handle window resize  
-        window.addEventListener('resize', function() {  
-            canvas.width = window.innerWidth;  
-            canvas.height = window.innerHeight;  
-            gl.viewport(0, 0, canvas.width, canvas.height);  
-            gl.uniform1f(widthHandle, window.innerWidth);  
-            gl.uniform1f(heightHandle, window.innerHeight);  
-        });  
-
-        // Scroll effect for navbar  
-        window.addEventListener('scroll', function() {  
-            const navbar = document.querySelector('.navbar');  
-            if (window.scrollY > 50) {  
-                navbar.classList.add('scrolled');  
-            } else {  
-                navbar.classList.remove('scrolled');  
-            }  
-        });  
-
-        // Smooth scroll for navigation links  
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {  
-            anchor.addEventListener('click', function(e) {  
-                e.preventDefault();  
-                document.querySelector(this.getAttribute('href')).scrollIntoView({  
-                    behavior: 'smooth'  
-                });  
-            });  
-        });  
-    </script>  
-</body>  
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
 </html>
