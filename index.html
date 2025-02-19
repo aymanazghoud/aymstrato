@@ -54,6 +54,12 @@
             color: #00a3ff;
         }
 
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
         .hero {
             height: 100vh;
             display: flex;
@@ -125,16 +131,51 @@
         }
 
         @media (max-width: 768px) {
-            .features {
-                grid-template-columns: 1fr;
+            .navbar {
+                padding: 20px;
             }
-            
+
             .nav-links {
                 display: none;
+                flex-direction: column;
+                gap: 15px;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background: rgba(10, 14, 23, 0.95);
+                padding: 20px;
+                border-radius: 10px;
             }
-            
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
             .hero-content h1 {
                 font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 50px;
+                padding: 50px 20px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                padding: 50px 20px;
+            }
+
+            .feature-card {
+                padding: 20px;
             }
         }
     </style>
@@ -147,6 +188,9 @@
             <a href="#about">About</a>
             <a href="#features">Features</a>
             <a href="#contact">Contact</a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
         </div>
     </nav>
 
@@ -206,7 +250,9 @@
             scale: 1.00,
             scaleMobile: 1.00,
             color: 0x00a3ff, // Hex color for the net effect
-            backgroundColor: 0x131822 // Hex color for the background
+            backgroundColor: 0x131822, // Hex color for the background
+            points: 10, // Reduce the number of points for better performance
+            spacing: 15 // Adjust spacing for a cleaner look
         });
 
         // Navbar scroll effect
@@ -228,6 +274,12 @@
                 });
             });
         });
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
