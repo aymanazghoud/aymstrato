@@ -69,31 +69,36 @@
             padding: 0 20px;
             position: relative;
             z-index: 1;
+            background: linear-gradient(135deg, #131822 0%, #1c2331 100%);
         }
 
         .hero-content h1 {
             font-size: 3.5em;
             margin-bottom: 20px;
+            line-height: 1.2;
         }
 
         .hero-content p {
             font-size: 1.2em;
             margin-bottom: 30px;
+            line-height: 1.6;
         }
 
         .cta-button {
             padding: 15px 40px;
-            background: #00a3ff;
+            background: linear-gradient(135deg, #00a3ff 0%, #007acc 100%);
             color: white;
             border: none;
             border-radius: 5px;
             font-size: 1.1em;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .cta-button:hover {
-            background: #007acc;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
         .stats {
@@ -118,16 +123,40 @@
         }
 
         .feature-card {
-            background: #131822;
+            background: #1c2331;
             padding: 30px;
             border-radius: 10px;
             text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .feature-card i {
             font-size: 2em;
             color: #00a3ff;
             margin-bottom: 20px;
+        }
+
+        .footer {
+            padding: 50px 20px;
+            background: #1c2331;
+            text-align: center;
+            color: #fff;
+        }
+
+        .footer a {
+            color: #00a3ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #007acc;
         }
 
         @media (max-width: 768px) {
@@ -234,6 +263,10 @@
             <p>Round-the-clock customer support service</p>
         </div>
     </section>
+
+    <footer class="footer">
+        <p>&copy; 2023 AYMSTRATO. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+    </footer>
 
     <!-- Add Three.js and Vanta.js scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
