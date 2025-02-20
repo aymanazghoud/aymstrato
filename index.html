@@ -142,6 +142,122 @@
             margin-bottom: 20px;
         }
 
+        .subscriptions {
+            padding: 100px 50px;
+            background: #1c2331;
+            text-align: center;
+        }
+
+        .subscriptions h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .subscriptions p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .subscription-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .subscription-card {
+            background: #131822;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .subscription-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .subscription-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .subscription-card p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .subscription-card .price {
+            font-size: 2em;
+            color: #00a3ff;
+            margin-bottom: 20px;
+        }
+
+        .subscription-card button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #00a3ff 0%, #007acc 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .subscription-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonials {
+            padding: 100px 50px;
+            background: #131822;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #1c2331;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-card h4 {
+            font-size: 1.2em;
+            color: #00a3ff;
+        }
+
         .footer {
             padding: 50px 20px;
             background: #1c2331;
@@ -198,12 +314,12 @@
                 padding: 50px 20px;
             }
 
-            .features {
+            .features, .subscription-cards, .testimonial-cards {
                 grid-template-columns: 1fr;
                 padding: 50px 20px;
             }
 
-            .feature-card {
+            .feature-card, .subscription-card, .testimonial-card {
                 padding: 20px;
             }
         }
@@ -216,6 +332,8 @@
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#features">Features</a>
+            <a href="#subscriptions">Subscriptions</a>
+            <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
         </div>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -264,8 +382,59 @@
         </div>
     </section>
 
+    <section class="subscriptions" id="subscriptions">
+        <h2>Subscription Plans</h2>
+        <p>Choose a plan that suits your trading needs</p>
+        <div class="subscription-cards">
+            <div class="subscription-card">
+                <h3>1 Month</h3>
+                <p>Perfect for short-term traders</p>
+                <div class="price">$40,000</div>
+                <button>Subscribe Now</button>
+            </div>
+            <div class="subscription-card">
+                <h3>1 Year</h3>
+                <p>Ideal for serious traders</p>
+                <div class="price">$300,000</div>
+                <button>Subscribe Now</button>
+            </div>
+            <div class="subscription-card">
+                <h3>Lifetime</h3>
+                <p>For traders committed to long-term success</p>
+                <div class="price">$2,000,000</div>
+                <button>Subscribe Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Traders Say</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <img src="https://via.placeholder.com/80" alt="Trader 1">
+                <p>"AYMSTRATO has transformed my trading journey. Highly recommended!"</p>
+                <h4>John Doe</h4>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://via.placeholder.com/80" alt="Trader 2">
+                <p>"The support team is amazing, and the tools are top-notch."</p>
+                <h4>Jane Smith</h4>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://via.placeholder.com/80" alt="Trader 3">
+                <p>"I’ve never felt more confident in my trading decisions."</p>
+                <h4>Mike Johnson</h4>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <p>&copy; 2023 AYMSTRATO. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
     </footer>
 
     <!-- Add Three.js and Vanta.js scripts -->
