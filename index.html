@@ -6,6 +6,28 @@
     <title>AYMSTRATO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Add this CSS for the language switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-switcher select {
+            padding: 5px 10px;
+            border: 1px solid #00a3ff;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .language-switcher select option {
+            background: #1c2331;
+            color: white;
+        }
+
+        /* Rest of your CSS remains the same */
         * {
             margin: 0;
             padding: 0;
@@ -15,7 +37,8 @@
 
         body {
             color: white;
-            background: #131822; /* Fallback background for the rest of the website */
+            background: #131822;
+            scroll-behavior: smooth;
         }
 
         .navbar {
@@ -26,11 +49,12 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            transition: background 0.3s;
+            transition: background 0.3s ease, padding 0.3s ease;
         }
 
         .navbar.scrolled {
             background: rgba(10, 14, 23, 0.95);
+            padding: 15px 50px;
         }
 
         .logo {
@@ -47,7 +71,8 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
+            font-size: 16px;
         }
 
         .nav-links a:hover {
@@ -73,13 +98,14 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5em;
+            font-size: 3em;
             margin-bottom: 20px;
             line-height: 1.2;
+            font-weight: 700;
         }
 
         .hero-content p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin-bottom: 30px;
             line-height: 1.6;
         }
@@ -90,9 +116,9 @@
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.1em;
+            font-size: 1em;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -111,8 +137,12 @@
 
         .stat-item h2 {
             color: #00a3ff;
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1em;
         }
 
         .features {
@@ -127,7 +157,7 @@
             padding: 30px;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -142,6 +172,15 @@
             margin-bottom: 20px;
         }
 
+        .feature-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            font-size: 1em;
+        }
+
         .subscriptions {
             padding: 100px 50px;
             background: #1c2331;
@@ -149,12 +188,12 @@
         }
 
         .subscriptions h2 {
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 20px;
         }
 
         .subscriptions p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             margin-bottom: 40px;
         }
 
@@ -169,7 +208,7 @@
             padding: 30px;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -189,7 +228,7 @@
         }
 
         .subscription-card .price {
-            font-size: 2em;
+            font-size: 1.8em;
             color: #00a3ff;
             margin-bottom: 20px;
         }
@@ -202,7 +241,7 @@
             border-radius: 5px;
             font-size: 1em;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .subscription-card button:hover {
@@ -217,7 +256,7 @@
         }
 
         .testimonials h2 {
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 40px;
         }
 
@@ -232,7 +271,7 @@
             padding: 30px;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -246,7 +285,7 @@
             height: 80px;
             border-radius: 50%;
             margin-bottom: 20px;
-            object-fit: cover; /* Ensure images fit properly */
+            object-fit: cover;
         }
 
         .testimonial-card p {
@@ -269,7 +308,7 @@
         .footer a {
             color: #00a3ff;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .footer a:hover {
@@ -278,7 +317,7 @@
 
         @media (max-width: 768px) {
             .navbar {
-                padding: 20px;
+                padding: 15px 20px;
             }
 
             .nav-links {
@@ -302,7 +341,7 @@
             }
 
             .hero-content h1 {
-                font-size: 2.5em;
+                font-size: 2.2em;
             }
 
             .hero-content p {
@@ -330,12 +369,19 @@
     <nav class="navbar">
         <div class="logo">AYMSTRATO</div>
         <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#subscriptions">Subscriptions</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" data-key="home">Home</a>
+            <a href="#about" data-key="about">About</a>
+            <a href="#features" data-key="features">Features</a>
+            <a href="#subscriptions" data-key="subscriptions">Subscriptions</a>
+            <a href="#testimonials" data-key="testimonials">Testimonials</a>
+            <a href="#contact" data-key="contact">Contact</a>
+        </div>
+        <div class="language-switcher">
+            <select id="language-select">
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="ar">العربية</option>
+            </select>
         </div>
         <div class="menu-icon" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -344,93 +390,93 @@
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Empower Your Trading Journey</h1>
-            <p>Join thousands of successful traders worldwide</p>
-            <button class="cta-button">Get Started</button>
+            <h1 data-key="heroTitle">Empower Your Trading Journey</h1>
+            <p data-key="heroSubtitle">Join thousands of successful traders worldwide</p>
+            <button class="cta-button" data-key="ctaButton">Get Started</button>
         </div>
     </section>
 
     <section class="stats">
         <div class="stat-item">
             <h2>$100M+</h2>
-            <p>Capital Deployed</p>
+            <p data-key="capitalDeployed">Capital Deployed</p>
         </div>
         <div class="stat-item">
             <h2>50K+</h2>
-            <p>Traders Funded</p>
+            <p data-key="tradersFunded">Traders Funded</p>
         </div>
         <div class="stat-item">
             <h2>150+</h2>
-            <p>Countries Supported</p>
+            <p data-key="countriesSupported">Countries Supported</p>
         </div>
     </section>
 
     <section class="features" id="features">
         <div class="feature-card">
             <i class="fas fa-chart-line"></i>
-            <h3>Advanced Analytics</h3>
-            <p>Real-time market data and advanced charting tools</p>
+            <h3 data-key="analyticsTitle">Advanced Analytics</h3>
+            <p data-key="analyticsDescription">Real-time market data and advanced charting tools</p>
         </div>
         <div class="feature-card">
             <i class="fas fa-shield-alt"></i>
-            <h3>Risk Management</h3>
-            <p>Sophisticated risk management tools and protocols</p>
+            <h3 data-key="riskTitle">Risk Management</h3>
+            <p data-key="riskDescription">Sophisticated risk management tools and protocols</p>
         </div>
         <div class="feature-card">
             <i class="fas fa-clock"></i>
-            <h3>24/7 Support</h3>
-            <p>Round-the-clock customer support service</p>
+            <h3 data-key="supportTitle">24/7 Support</h3>
+            <p data-key="supportDescription">Round-the-clock customer support service</p>
         </div>
     </section>
 
     <section class="subscriptions" id="subscriptions">
-        <h2>Subscription Plans</h2>
-        <p>Choose a plan that suits your trading needs</p>
+        <h2 data-key="subscriptionTitle">Subscription Plans</h2>
+        <p data-key="subscriptionSubtitle">Choose a plan that suits your trading needs</p>
         <div class="subscription-cards">
             <div class="subscription-card">
-                <h3>1 Month</h3>
-                <p>Perfect for short-term traders</p>
+                <h3 data-key="monthlyPlan">1 Month</h3>
+                <p data-key="monthlyDescription">Perfect for short-term traders</p>
                 <div class="price">$40,000</div>
-                <button>Subscribe Now</button>
+                <button data-key="subscribeButton">Subscribe Now</button>
             </div>
             <div class="subscription-card">
-                <h3>1 Year</h3>
-                <p>Ideal for serious traders</p>
+                <h3 data-key="yearlyPlan">1 Year</h3>
+                <p data-key="yearlyDescription">Ideal for serious traders</p>
                 <div class="price">$300,000</div>
-                <button>Subscribe Now</button>
+                <button data-key="subscribeButton">Subscribe Now</button>
             </div>
             <div class="subscription-card">
-                <h3>Lifetime</h3>
-                <p>For traders committed to long-term success</p>
+                <h3 data-key="lifetimePlan">Lifetime</h3>
+                <p data-key="lifetimeDescription">For traders committed to long-term success</p>
                 <div class="price">$2,000,000</div>
-                <button>Subscribe Now</button>
+                <button data-key="subscribeButton">Subscribe Now</button>
             </div>
         </div>
     </section>
 
     <section class="testimonials" id="testimonials">
-        <h2>What Our Traders Say</h2>
+        <h2 data-key="testimonialsTitle">What Our Traders Say</h2>
         <div class="testimonial-cards">
             <div class="testimonial-card">
                 <img src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Trader 1">
-                <p>"AYMSTRATO has transformed my trading journey. Highly recommended!"</p>
+                <p data-key="testimonial1">"AYMSTRATO has transformed my trading journey. Highly recommended!"</p>
                 <h4>John Doe</h4>
             </div>
             <div class="testimonial-card">
                 <img src="https://images.unsplash.com/photo-1499996860823-5214fcc65f8f?q=80&w=1366&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Trader 2">
-                <p>"The support team is amazing, and the tools are top-notch."</p>
+                <p data-key="testimonial2">"The support team is amazing, and the tools are top-notch."</p>
                 <h4>Jane Smith</h4>
             </div>
             <div class="testimonial-card">
                 <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Trader 3">
-                <p>"I’ve never felt more confident in my trading decisions."</p>
+                <p data-key="testimonial3">"I’ve never felt more confident in my trading decisions."</p>
                 <h4>Mike Johnson</h4>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p>&copy; 2023 AYMSTRATO. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        <p>&copy; 2023 AYMSTRATO. All rights reserved. | <a href="#privacy" data-key="privacyPolicy">Privacy Policy</a> | <a href="#terms" data-key="termsOfService">Terms of Service</a></p>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -444,7 +490,7 @@
     <script>
         // Initialize Vanta.js NET effect only in the .hero section
         VANTA.NET({
-            el: ".hero", // Apply to the .hero section only
+            el: ".hero",
             mouseControls: true,
             touchControls: true,
             gyroControls: false,
@@ -452,10 +498,10 @@
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: 0x00a3ff, // Hex color for the net effect
-            backgroundColor: 0x131822, // Hex color for the background
-            points: 10, // Reduce the number of points for better performance
-            spacing: 15 // Adjust spacing for a cleaner look
+            color: 0x00a3ff,
+            backgroundColor: 0x131822,
+            points: 10,
+            spacing: 15
         });
 
         // Navbar scroll effect
@@ -483,6 +529,138 @@
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
+
+        // Language Switcher
+        const translations = {
+            en: {
+                home: "Home",
+                about: "About",
+                features: "Features",
+                subscriptions: "Subscriptions",
+                testimonials: "Testimonials",
+                contact: "Contact",
+                heroTitle: "Empower Your Trading Journey",
+                heroSubtitle: "Join thousands of successful traders worldwide",
+                ctaButton: "Get Started",
+                capitalDeployed: "Capital Deployed",
+                tradersFunded: "Traders Funded",
+                countriesSupported: "Countries Supported",
+                analyticsTitle: "Advanced Analytics",
+                analyticsDescription: "Real-time market data and advanced charting tools",
+                riskTitle: "Risk Management",
+                riskDescription: "Sophisticated risk management tools and protocols",
+                supportTitle: "24/7 Support",
+                supportDescription: "Round-the-clock customer support service",
+                subscriptionTitle: "Subscription Plans",
+                subscriptionSubtitle: "Choose a plan that suits your trading needs",
+                monthlyPlan: "1 Month",
+                monthlyDescription: "Perfect for short-term traders",
+                yearlyPlan: "1 Year",
+                yearlyDescription: "Ideal for serious traders",
+                lifetimePlan: "Lifetime",
+                lifetimeDescription: "For traders committed to long-term success",
+                subscribeButton: "Subscribe Now",
+                testimonialsTitle: "What Our Traders Say",
+                testimonial1: "\"AYMSTRATO has transformed my trading journey. Highly recommended!\"",
+                testimonial2: "\"The support team is amazing, and the tools are top-notch.\"",
+                testimonial3: "\"I’ve never felt more confident in my trading decisions.\"",
+                privacyPolicy: "Privacy Policy",
+                termsOfService: "Terms of Service"
+            },
+            fr: {
+                home: "Accueil",
+                about: "À propos",
+                features: "Fonctionnalités",
+                subscriptions: "Abonnements",
+                testimonials: "Témoignages",
+                contact: "Contact",
+                heroTitle: "Renforcez Votre Parcours de Trading",
+                heroSubtitle: "Rejoignez des milliers de traders réussis dans le monde",
+                ctaButton: "Commencer",
+                capitalDeployed: "Capital Déployé",
+                tradersFunded: "Traders Financés",
+                countriesSupported: "Pays Supportés",
+                analyticsTitle: "Analyses Avancées",
+                analyticsDescription: "Données de marché en temps réel et outils de graphiques avancés",
+                riskTitle: "Gestion des Risques",
+                riskDescription: "Outils et protocoles sophistiqués de gestion des risques",
+                supportTitle: "Support 24/7",
+                supportDescription: "Service d'assistance clientèle disponible 24 heures sur 24",
+                subscriptionTitle: "Plans d'Abonnement",
+                subscriptionSubtitle: "Choisissez un plan qui correspond à vos besoins de trading",
+                monthlyPlan: "1 Mois",
+                monthlyDescription: "Parfait pour les traders à court terme",
+                yearlyPlan: "1 An",
+                yearlyDescription: "Idéal pour les traders sérieux",
+                lifetimePlan: "À Vie",
+                lifetimeDescription: "Pour les traders engagés dans le succès à long terme",
+                subscribeButton: "S'abonner Maintenant",
+                testimonialsTitle: "Ce Que Disent Nos Traders",
+                testimonial1: "\"AYMSTRATO a transformé mon parcours de trading. Hautement recommandé !\"",
+                testimonial2: "\"L'équipe de support est incroyable, et les outils sont de premier ordre.\"",
+                testimonial3: "\"Je n'ai jamais été aussi confiant dans mes décisions de trading.\"",
+                privacyPolicy: "Politique de Confidentialité",
+                termsOfService: "Conditions d'Utilisation"
+            },
+            ar: {
+                home: "الرئيسية",
+                about: "من نحن",
+                features: "الميزات",
+                subscriptions: "الاشتراكات",
+                testimonials: "الشهادات",
+                contact: "اتصل بنا",
+                heroTitle: "عزز رحلتك في التداول",
+                heroSubtitle: "انضم إلى آلاف المتداولين الناجحين حول العالم",
+                ctaButton: "ابدأ الآن",
+                capitalDeployed: "رأس المال المُنفّذ",
+                tradersFunded: "المتداولون الممولون",
+                countriesSupported: "الدول المدعومة",
+                analyticsTitle: "التحليلات المتقدمة",
+                analyticsDescription: "بيانات السوق في الوقت الفعلي وأدوات الرسم البياني المتقدمة",
+                riskTitle: "إدارة المخاطر",
+                riskDescription: "أدوات وبروتوكولات متطورة لإدارة المخاطر",
+                supportTitle: "الدعم على مدار الساعة",
+                supportDescription: "خدمة دعم العملاء المتاحة 24/7",
+                subscriptionTitle: "خطط الاشتراك",
+                subscriptionSubtitle: "اختر خطة تناسب احتياجاتك في التداول",
+                monthlyPlan: "1 شهر",
+                monthlyDescription: "مثالي للمتداولين على المدى القصير",
+                yearlyPlan: "1 سنة",
+                yearlyDescription: "مثالي للمتداولين الجادين",
+                lifetimePlan: "مدى الحياة",
+                lifetimeDescription: "للمتداولين الملتزمين بالنجاح على المدى الطويل",
+                subscribeButton: "اشترك الآن",
+                testimonialsTitle: "ما يقوله متداولونا",
+                testimonial1: "\"AYMSTRATO غيرت رحلتي في التداول. أوصي بها بشدة!\"",
+                testimonial2: "\"فريق الدعم رائع، والأدوات هي الأفضل.\"",
+                testimonial3: "\"لم أشعر أبدًا بمزيد من الثقة في قرارات التداول الخاصة بي.\"",
+                privacyPolicy: "سياسة الخصوصية",
+                termsOfService: "شروط الخدمة"
+            }
+        };
+
+        const languageSelect = document.getElementById('language-select');
+        languageSelect.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            updateContent(lang);
+        });
+
+        function updateContent(lang) {
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                element.textContent = translations[lang][key];
+            });
+
+            // Update Arabic text direction
+            if (lang === 'ar') {
+                document.body.style.direction = 'rtl';
+            } else {
+                document.body.style.direction = 'ltr';
+            }
+        }
+
+        // Set default language to English
+        updateContent('en');
     </script>
 </body>
 </html>
