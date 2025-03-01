@@ -2,372 +2,24 @@
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="images/image.png">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AYMSTRATO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Add this CSS for the language switcher */
-        .language-switcher {
-            position: relative;
-            display: inline-block;
-        }
-
-        .language-switcher select {
-            padding: 5px 10px;
-            border: 1px solid #00a3ff;
-            border-radius: 5px;
-            background: transparent;
-            color: white;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .language-switcher select option {
-            background: #1c2331;
-            color: white;
-        }
-
-        /* Rest of your CSS remains the same */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            color: white;
-            background: #131822;
-            scroll-behavior: smooth;
-        }
-
-        .navbar {
-            position: fixed;
-            width: 100%;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: background 0.3s ease, padding 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(10, 14, 23, 0.95);
-            padding: 15px 50px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00a3ff;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-size: 16px;
-        }
-
-        .nav-links a:hover {
-            color: #00a3ff;
-        }
-
-        .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(135deg, #131822 0%, #1c2331 100%);
-        }
-
-        .hero-content h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            font-weight: 700;
-        }
-
-        .hero-content p {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .cta-button {
-            padding: 15px 40px;
-            background: linear-gradient(135deg, #00a3ff 0%, #007acc 100%);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .stats {
-            padding: 100px 50px;
-            background: #131822;
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-        }
-
-        .stat-item h2 {
-            color: #00a3ff;
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        .stat-item p {
-            font-size: 1em;
-        }
-
-        .features {
-            padding: 100px 50px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: #1c2331;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-card i {
-            font-size: 2em;
-            color: #00a3ff;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-
-        .feature-card p {
-            font-size: 1em;
-        }
-
-        .subscriptions {
-            padding: 100px 50px;
-            background: #1c2331;
-            text-align: center;
-        }
-
-        .subscriptions h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .subscriptions p {
-            font-size: 1.1em;
-            margin-bottom: 40px;
-        }
-
-        .subscription-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .subscription-card {
-            background: #131822;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .subscription-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .subscription-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-
-        .subscription-card p {
-            font-size: 1em;
-            margin-bottom: 20px;
-        }
-
-        .subscription-card .price {
-            font-size: 1.8em;
-            color: #00a3ff;
-            margin-bottom: 20px;
-        }
-
-        .subscription-card button {
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #00a3ff 0%, #007acc 100%);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .subscription-card button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonials {
-            padding: 100px 50px;
-            background: #131822;
-            text-align: center;
-        }
-
-        .testimonials h2 {
-            font-size: 2em;
-            margin-bottom: 40px;
-        }
-
-        .testimonial-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: #1c2331;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonial-card img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            object-fit: cover;
-        }
-
-        .testimonial-card p {
-            font-size: 1em;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-card h4 {
-            font-size: 1.2em;
-            color: #00a3ff;
-        }
-
-        .footer {
-            padding: 50px 20px;
-            background: #1c2331;
-            text-align: center;
-            color: #fff;
-        }
-
-        .footer a {
-            color: #00a3ff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: #007acc;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 20px;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                gap: 15px;
-                position: absolute;
-                top: 70px;
-                right: 20px;
-                background: rgba(10, 14, 23, 0.95);
-                padding: 20px;
-                border-radius: 10px;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .menu-icon {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 2.2em;
-            }
-
-            .hero-content p {
-                font-size: 1em;
-            }
-
-            .stats {
-                flex-direction: column;
-                gap: 50px;
-                padding: 50px 20px;
-            }
-
-            .features, .subscription-cards, .testimonial-cards {
-                grid-template-columns: 1fr;
-                padding: 50px 20px;
-            }
-
-            .feature-card, .subscription-card, .testimonial-card {
-                padding: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="loading-overlay">
+        <div class="pyramid-loader">
+          <div class="wrapper">
+            <span class="side side1"></span>
+            <span class="side side2"></span>
+            <span class="side side3"></span>
+            <span class="side side4"></span>
+            <span class="shadow"></span>
+          </div>
+        </div>
+      </div>
     <nav class="navbar">
         <div class="logo">AYMSTRATO</div>
         <div class="nav-links">
@@ -397,7 +49,6 @@
             <a href="login.html">
                 <button class="cta-button" data-key="ctaButton">Get Started</button>
             </a>
-            
         </div>
     </section>
 
@@ -419,13 +70,13 @@
     <section class="features" id="features">
         <div class="feature-card">
             <i class="fas fa-chart-line"></i>
-            <h3 data-key="analyticsTitle">Advanced Analytics</h3>
-            <p data-key="analyticsDescription">Real-time market data and advanced charting tools</p>
+            <h3 data-key="analyticsTitle">High Win Rate</h3>
+            <p data-key="analyticsDescription">AYMSTRATO uses a proven strategy with a high win rate, giving you consistent results.</p>
         </div>
         <div class="feature-card">
             <i class="fas fa-shield-alt"></i>
             <h3 data-key="riskTitle">Risk Management</h3>
-            <p data-key="riskDescription">Sophisticated risk management tools and protocols</p>
+            <p data-key="riskDescription">Our advanced risk management system ensures your capital is protected at all times.</p>
         </div>
         <div class="feature-card">
             <i class="fas fa-clock"></i>
@@ -444,7 +95,7 @@
                 <div class="price">$40,000</div>
                 <a href="login.html">
                     <button data-key="subscribeButton">Subscribe Now</button>
-                    </a>
+                </a>
             </div>
             <div class="subscription-card">
                 <h3 data-key="yearlyPlan">1 Year</h3>
@@ -452,19 +103,197 @@
                 <div class="price">$300,000</div>
                 <a href="login.html">
                     <button data-key="subscribeButton">Subscribe Now</button>
-                    </a>
+                </a>
             </div>
             <div class="subscription-card">
                 <h3 data-key="lifetimePlan">Lifetime</h3>
                 <p data-key="lifetimeDescription">For traders committed to long-term success</p>
                 <div class="price">$2,000,000</div>
                 <a href="login.html">
-                <button data-key="subscribeButton">Subscribe Now</button>
+                    <button data-key="subscribeButton">Subscribe Now</button>
                 </a>
             </div>
         </div>
     </section>
-
+    <section class="card-hover-section">
+        <div class="card-container">
+            <!-- Card 1: Automated Trading -->
+            <div class="container noselect">
+                <div class="canvas">
+                    <div class="tracker tr-1"></div>
+                    <div class="tracker tr-2"></div>
+                    <div class="tracker tr-3"></div>
+                    <div class="tracker tr-4"></div>
+                    <div class="tracker tr-5"></div>
+                    <div class="tracker tr-6"></div>
+                    <div class="tracker tr-7"></div>
+                    <div class="tracker tr-8"></div>
+                    <div class="tracker tr-9"></div>
+                    <div class="tracker tr-10"></div>
+                    <div class="tracker tr-11"></div>
+                    <div class="tracker tr-12"></div>
+                    <div class="tracker tr-13"></div>
+                    <div class="tracker tr-14"></div>
+                    <div class="tracker tr-15"></div>
+                    <div class="tracker tr-16"></div>
+                    <div class="tracker tr-17"></div>
+                    <div class="tracker tr-18"></div>
+                    <div class="tracker tr-19"></div>
+                    <div class="tracker tr-20"></div>
+                    <div class="tracker tr-21"></div>
+                    <div class="tracker tr-22"></div>
+                    <div class="tracker tr-23"></div>
+                    <div class="tracker tr-24"></div>
+                    <div class="tracker tr-25"></div>
+                    <div id="card">
+                        <!-- Default Content (Icon + Title) -->
+                        <div class="default-content">
+                            <div class="icon">
+                                <img src="https://img.icons8.com/ios-filled/50/ffffff/automatic.png" alt="Automated Trading" />
+                            </div>
+                            <div class="title">Automated Trading</div>
+                        </div>
+                        <!-- Hover Content (Description) -->
+                        <div class="hover-content">
+                            <p>Connect to MT4/MT5 and let Aymstrato execute trades with a high win-rate strategy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card 2: Risk & Money Management -->
+            <div class="container noselect">
+                <div class="canvas">
+                    <div class="tracker tr-1"></div>
+                    <div class="tracker tr-2"></div>
+                    <div class="tracker tr-3"></div>
+                    <div class="tracker tr-4"></div>
+                    <div class="tracker tr-5"></div>
+                    <div class="tracker tr-6"></div>
+                    <div class="tracker tr-7"></div>
+                    <div class="tracker tr-8"></div>
+                    <div class="tracker tr-9"></div>
+                    <div class="tracker tr-10"></div>
+                    <div class="tracker tr-11"></div>
+                    <div class="tracker tr-12"></div>
+                    <div class="tracker tr-13"></div>
+                    <div class="tracker tr-14"></div>
+                    <div class="tracker tr-15"></div>
+                    <div class="tracker tr-16"></div>
+                    <div class="tracker tr-17"></div>
+                    <div class="tracker tr-18"></div>
+                    <div class="tracker tr-19"></div>
+                    <div class="tracker tr-20"></div>
+                    <div class="tracker tr-21"></div>
+                    <div class="tracker tr-22"></div>
+                    <div class="tracker tr-23"></div>
+                    <div class="tracker tr-24"></div>
+                    <div class="tracker tr-25"></div>
+                    <div id="card">
+                        <!-- Default Content (Icon + Title) -->
+                        <div class="default-content">
+                            <div class="icon">
+                                <img src="https://img.icons8.com/?size=100&id=YTB0bqClEMVk&format=png&color=FFFFFF" alt="Risk Management" />
+                            </div>
+                            <div class="title">Risk Management</div>
+                        </div>
+                        <!-- Hover Content (Description) -->
+                        <div class="hover-content">
+                            <p>Optimize risk levels and trade sizes to protect your capital.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card 3: Profit Calculation -->
+            <div class="container noselect">
+                <div class="canvas">
+                    <div class="tracker tr-1"></div>
+                    <div class="tracker tr-2"></div>
+                    <div class="tracker tr-3"></div>
+                    <div class="tracker tr-4"></div>
+                    <div class="tracker tr-5"></div>
+                    <div class="tracker tr-6"></div>
+                    <div class="tracker tr-7"></div>
+                    <div class="tracker tr-8"></div>
+                    <div class="tracker tr-9"></div>
+                    <div class="tracker tr-10"></div>
+                    <div class="tracker tr-11"></div>
+                    <div class="tracker tr-12"></div>
+                    <div class="tracker tr-13"></div>
+                    <div class="tracker tr-14"></div>
+                    <div class="tracker tr-15"></div>
+                    <div class="tracker tr-16"></div>
+                    <div class="tracker tr-17"></div>
+                    <div class="tracker tr-18"></div>
+                    <div class="tracker tr-19"></div>
+                    <div class="tracker tr-20"></div>
+                    <div class="tracker tr-21"></div>
+                    <div class="tracker tr-22"></div>
+                    <div class="tracker tr-23"></div>
+                    <div class="tracker tr-24"></div>
+                    <div class="tracker tr-25"></div>
+                    <div id="card">
+                        <!-- Default Content (Icon + Title) -->
+                        <div class="default-content">
+                            <div class="icon">
+                                <img src="https://img.icons8.com/?size=100&id=8322&format=png&color=FFFFFF" alt="Profit Calculation" />
+                            </div>
+                            <div class="title">Profit Calculation</div>
+                        </div>
+                        <!-- Hover Content (Description) -->
+                        <div class="hover-content">
+                            <p>Automatically calculate monthly profits based on your capital and balance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card 4: Secure Wallet System -->
+            <div class="container noselect">
+                <div class="canvas">
+                    <div class="tracker tr-1"></div>
+                    <div class="tracker tr-2"></div>
+                    <div class="tracker tr-3"></div>
+                    <div class="tracker tr-4"></div>
+                    <div class="tracker tr-5"></div>
+                    <div class="tracker tr-6"></div>
+                    <div class="tracker tr-7"></div>
+                    <div class="tracker tr-8"></div>
+                    <div class="tracker tr-9"></div>
+                    <div class="tracker tr-10"></div>
+                    <div class="tracker tr-11"></div>
+                    <div class="tracker tr-12"></div>
+                    <div class="tracker tr-13"></div>
+                    <div class="tracker tr-14"></div>
+                    <div class="tracker tr-15"></div>
+                    <div class="tracker tr-16"></div>
+                    <div class="tracker tr-17"></div>
+                    <div class="tracker tr-18"></div>
+                    <div class="tracker tr-19"></div>
+                    <div class="tracker tr-20"></div>
+                    <div class="tracker tr-21"></div>
+                    <div class="tracker tr-22"></div>
+                    <div class="tracker tr-23"></div>
+                    <div class="tracker tr-24"></div>
+                    <div class="tracker tr-25"></div>
+                    <div id="card">
+                        <!-- Default Content (Icon + Title) -->
+                        <div class="default-content">
+                            <div class="icon">
+                                <img src="https://img.icons8.com/ios-filled/50/ffffff/wallet.png" alt="Secure Wallet" />
+                            </div>
+                            <div class="title">Secure Wallet</div>
+                        </div>
+                        <!-- Hover Content (Description) -->
+                        <div class="hover-content">
+                            <p>Manage deposits, withdrawals, and transactions securely.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="testimonials" id="testimonials">
         <h2 data-key="testimonialsTitle">What Our Traders Say</h2>
         <div class="testimonial-cards">
@@ -495,184 +324,8 @@
         </div>
     </footer>
 
-    <!-- Add Three.js and Vanta.js scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <script>
-        // Initialize Vanta.js NET effect only in the .hero section
-        VANTA.NET({
-            el: ".hero",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x00a3ff,
-            backgroundColor: 0x131822,
-            points: 10,
-            spacing: 15
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Toggle mobile menu
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-
-        // Language Switcher
-        const translations = {
-            en: {
-                home: "Home",
-                about: "About",
-                features: "Features",
-                subscriptions: "Subscriptions",
-                testimonials: "Testimonials",
-                contact: "Contact",
-                heroTitle: "Empower Your Trading Journey",
-                heroSubtitle: "Join thousands of successful traders worldwide",
-                ctaButton: "Get Started",
-                capitalDeployed: "Capital Deployed",
-                tradersFunded: "Traders Funded",
-                countriesSupported: "Countries Supported",
-                analyticsTitle: "Advanced Analytics",
-                analyticsDescription: "Real-time market data and advanced charting tools",
-                riskTitle: "Risk Management",
-                riskDescription: "Sophisticated risk management tools and protocols",
-                supportTitle: "24/7 Support",
-                supportDescription: "Round-the-clock customer support service",
-                subscriptionTitle: "Subscription Plans",
-                subscriptionSubtitle: "Choose a plan that suits your trading needs",
-                monthlyPlan: "1 Month",
-                monthlyDescription: "Perfect for short-term traders",
-                yearlyPlan: "1 Year",
-                yearlyDescription: "Ideal for serious traders",
-                lifetimePlan: "Lifetime",
-                lifetimeDescription: "For traders committed to long-term success",
-                subscribeButton: "Subscribe Now",
-                testimonialsTitle: "What Our Traders Say",
-                testimonial1: "\"AYMSTRATO has transformed my trading journey. Highly recommended!\"",
-                testimonial2: "\"The support team is amazing, and the tools are top-notch.\"",
-                testimonial3: "\"I’ve never felt more confident in my trading decisions.\"",
-                privacyPolicy: "Privacy Policy",
-                termsOfService: "Terms of Service"
-            },
-            fr: {
-                home: "Accueil",
-                about: "À propos",
-                features: "Fonctionnalités",
-                subscriptions: "Abonnements",
-                testimonials: "Témoignages",
-                contact: "Contact",
-                heroTitle: "Renforcez Votre Parcours de Trading",
-                heroSubtitle: "Rejoignez des milliers de traders réussis dans le monde",
-                ctaButton: "Commencer",
-                capitalDeployed: "Capital Déployé",
-                tradersFunded: "Traders Financés",
-                countriesSupported: "Pays Supportés",
-                analyticsTitle: "Analyses Avancées",
-                analyticsDescription: "Données de marché en temps réel et outils de graphiques avancés",
-                riskTitle: "Gestion des Risques",
-                riskDescription: "Outils et protocoles sophistiqués de gestion des risques",
-                supportTitle: "Support 24/7",
-                supportDescription: "Service d'assistance clientèle disponible 24 heures sur 24",
-                subscriptionTitle: "Plans d'Abonnement",
-                subscriptionSubtitle: "Choisissez un plan qui correspond à vos besoins de trading",
-                monthlyPlan: "1 Mois",
-                monthlyDescription: "Parfait pour les traders à court terme",
-                yearlyPlan: "1 An",
-                yearlyDescription: "Idéal pour les traders sérieux",
-                lifetimePlan: "À Vie",
-                lifetimeDescription: "Pour les traders engagés dans le succès à long terme",
-                subscribeButton: "S'abonner Maintenant",
-                testimonialsTitle: "Ce Que Disent Nos Traders",
-                testimonial1: "\"AYMSTRATO a transformé mon parcours de trading. Hautement recommandé !\"",
-                testimonial2: "\"L'équipe de support est incroyable, et les outils sont de premier ordre.\"",
-                testimonial3: "\"Je n'ai jamais été aussi confiant dans mes décisions de trading.\"",
-                privacyPolicy: "Politique de Confidentialité",
-                termsOfService: "Conditions d'Utilisation"
-            },
-            ar: {
-                home: "الرئيسية",
-                about: "من نحن",
-                features: "الميزات",
-                subscriptions: "الاشتراكات",
-                testimonials: "الشهادات",
-                contact: "اتصل بنا",
-                heroTitle: "عزز رحلتك في التداول",
-                heroSubtitle: "انضم إلى آلاف المتداولين الناجحين حول العالم",
-                ctaButton: "ابدأ الآن",
-                capitalDeployed: "رأس المال المُنفّذ",
-                tradersFunded: "المتداولون الممولون",
-                countriesSupported: "الدول المدعومة",
-                analyticsTitle: "التحليلات المتقدمة",
-                analyticsDescription: "بيانات السوق في الوقت الفعلي وأدوات الرسم البياني المتقدمة",
-                riskTitle: "إدارة المخاطر",
-                riskDescription: "أدوات وبروتوكولات متطورة لإدارة المخاطر",
-                supportTitle: "الدعم على مدار الساعة",
-                supportDescription: "خدمة دعم العملاء المتاحة 24/7",
-                subscriptionTitle: "خطط الاشتراك",
-                subscriptionSubtitle: "اختر خطة تناسب احتياجاتك في التداول",
-                monthlyPlan: "1 شهر",
-                monthlyDescription: "مثالي للمتداولين على المدى القصير",
-                yearlyPlan: "1 سنة",
-                yearlyDescription: "مثالي للمتداولين الجادين",
-                lifetimePlan: "مدى الحياة",
-                lifetimeDescription: "للمتداولين الملتزمين بالنجاح على المدى الطويل",
-                subscribeButton: "اشترك الآن",
-                testimonialsTitle: "ما يقوله متداولونا",
-                testimonial1: "\"AYMSTRATO غيرت رحلتي في التداول. أوصي بها بشدة!\"",
-                testimonial2: "\"فريق الدعم رائع، والأدوات هي الأفضل.\"",
-                testimonial3: "\"لم أشعر أبدًا بمزيد من الثقة في قرارات التداول الخاصة بي.\"",
-                privacyPolicy: "سياسة الخصوصية",
-                termsOfService: "شروط الخدمة"
-            }
-        };
-
-        const languageSelect = document.getElementById('language-select');
-        languageSelect.addEventListener('change', (e) => {
-            const lang = e.target.value;
-            updateContent(lang);
-        });
-
-        function updateContent(lang) {
-            document.querySelectorAll('[data-key]').forEach(element => {
-                const key = element.getAttribute('data-key');
-                element.textContent = translations[lang][key];
-            });
-
-            // Update Arabic text direction
-            if (lang === 'ar') {
-                document.body.style.direction = 'rtl';
-            } else {
-                document.body.style.direction = 'ltr';
-            }
-        }
-
-        // Set default language to English
-        updateContent('en');
-    </script>
-    
+    <script src="script.js"></script>
 </body>
 </html>
